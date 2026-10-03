@@ -16,16 +16,16 @@ import matplotlib.pyplot as plt
 
 LAMBDA = 0.3
 
-# 1. читаем данные
+# 1 - reading data
 data = np.loadtxt("decay_observed.csv", delimiter=",", skiprows=1)
 t = data[:, 0]
 observed = data[:, 1]
 
-# 2. аналитический закон
+# 2 - analytical law
 N0 = observed[0]
 analytical = N0 * np.exp(-LAMBDA * t)
 
-# 3. два графика с общими осями
+# 3 - two graph plotting
 fig, (ax1, ax2) = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(10, 4))
 
 ax1.scatter(t, observed)
@@ -37,6 +37,6 @@ ax2.plot(t, analytical)
 ax2.set_title("Analytical: N0 * exp(-lambda * t)")
 ax2.set_xlabel("time")
 
-# 4. сохраняем
+# 4 - saving
 plt.tight_layout()
 plt.savefig("figure.png")
